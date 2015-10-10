@@ -1,6 +1,6 @@
 # EEGO
 
-# Project Descrption
+# Project Description
 
 Our website is based on user’s plans for traveling. If a new user want to visit a place, e.g. Los Angeles, he will search for available travel plans of Los Angeles on the website to get useful information. If there is no existing perfect plan, he can customize his own travel plan and post it to the Los Angeles page, serving as a reference to future users.
 
