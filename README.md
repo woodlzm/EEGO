@@ -10,5 +10,9 @@ Some additional features are that we can make location search more friendly, whi
 
 # Pivotal Tracker
 
-[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/1446774)
+Click [here](https://www.pivotaltracker.com/n/projects/1446774) to check pivotal tracker.
 
+# Team Members
+| <img src="./other/teammate/photo/Fengjia_Xiong.jpg" width="250"> | <img src="./other/teammate/photo/Zimu_Li.jpg" width="250"> | <img src="./other/teammate/photo/Haosheng_Zou.jpg"width="250"> | <img src="./other/teammate/photo/Mingrui_Shi.JPG" width ="250"> |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| Fengjia Xiong                          | Zimu Li                          | Haosheng Zou                            | Mingrui Shi                        |
