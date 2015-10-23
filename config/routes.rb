@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   devise_for :users
+
+  get '/notification' => 'notifications#index', as: :notification
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
