@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :friends
 
   devise_for :users
+
+  get '/notification' => 'notifications#index', as: :notification
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
