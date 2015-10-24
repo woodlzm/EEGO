@@ -3,6 +3,7 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.integer :sender_user_id
       t.string :message
+      t.integer :status
 
       t.references :user
 

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
+  get 'friends' => 'friends#index'
+  post 'friends' => 'friends#create'
   patch 'friends' => 'friends#update'
-  resources :friends
+  delete 'friends/:id' => 'friends#destroy', as: :destroy
+  #resource :friends, except: [:index, :create, :update, :edit]
 
   devise_for :users
 
