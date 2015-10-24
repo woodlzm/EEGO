@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete 'friends/:id' => 'friends#destroy', as: :destroy
   #resource :friends, except: [:index, :create, :update, :edit]
 
+  get 'googlmap' => 'welcome#googlmap'
+
   devise_for :users
 
   get '/notification' => 'notifications#index', as: :notification
