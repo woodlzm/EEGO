@@ -14,8 +14,7 @@
 ActiveRecord::Schema.define(version: 20151023032019) do
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "uid1"
-    t.integer  "uid2"
+    t.integer  "friend_id"
     t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151023032019) do
   create_table "notifications", force: :cascade do |t|
     t.integer  "sender_user_id"
     t.string   "message"
+    t.integer  "status"
     t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

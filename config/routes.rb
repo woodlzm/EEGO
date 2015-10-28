@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
+  get 'friends' => 'friends#index'
+  post 'friends' => 'friends#create'
+  patch 'friends' => 'friends#update'
+  delete 'friends/:id' => 'friends#destroy', as: :destroy
+  #resource :friends, except: [:index, :create, :update, :edit]
+
+  get 'googlmap' => 'welcome#googlmap'
+
   devise_for :users
 
   get '/notification' => 'notifications#index', as: :notification

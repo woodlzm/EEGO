@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :friendships
+
   has_many :notifications
+  def self.search(search)
+    where("email LIKE '%#{search}%'")
+  end
 end
