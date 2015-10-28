@@ -1,4 +1,6 @@
 class FriendsController < ApplicationController
+  before_action :require_user
+
   def index
     if params[:search] != nil
       @users = User.search(params[:search])
