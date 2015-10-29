@@ -5,21 +5,44 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <title>EasyGo!</title>
+    <style>
+        .search_user {
+            padding-top: 1cm;
+            text-align: center;
+        }
+
+        .results {
+            padding-top: 1cm;
+            text-align: center;
+        }
+
+
+    </style>
   </head>
 
   <body>
     <div class="nav navbar-default navbar-fixed-top">
       <div class="container">
+        <ul class="pull-left">
+          <li><a href="/home">Home</a></li>|
+          <li><a href="/adventure/new">New adventure</a></li>|
+          <li><a href="/friends">find friends</a></li>
+        </ul>
+
         <ul class="pull-right">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
+        <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
          </ul>
+
+      </div>
+    </div>
+
   	<%= yield %>
 </body>
 </html>
