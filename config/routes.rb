@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
+  get 'home' => 'welcome#index'
+
   get 'friends' => 'friends#index'
   post 'friends' => 'friends#create'
   patch 'friends' => 'friends#update'
@@ -8,6 +10,10 @@ Rails.application.routes.draw do
   #resource :friends, except: [:index, :create, :update, :edit]
 
   get 'googlmap' => 'welcome#googlmap'
+
+  get 'adventures/index' => 'adventures#index'
+  get 'adventures/search' => 'adventures#search'
+  post 'adventures/create' => 'adventures#create'
 
   devise_for :users
 

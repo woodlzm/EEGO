@@ -5,6 +5,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <title>EasyGo!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <style>
         .search_user {
             padding-top: 1cm;
@@ -12,6 +13,20 @@
         }
 
         .results {
+            padding-top: 1cm;
+            text-align: center;
+        }
+
+        .planform {
+            padding-top: 1cm;
+            align: center;
+        }
+
+        .planform td {
+            padding:10px 15px 0 15px;
+        }
+
+        .planresult {
             padding-top: 1cm;
             text-align: center;
         }
@@ -25,7 +40,7 @@
       <div class="container">
         <ul class="pull-left">
           <li><a href="/home">Home</a></li>|
-          <li><a href="/adventure/new">New adventure</a></li>|
+          <li><a href="/adventures/index">New adventure</a></li>|
           <li><a href="/friends">find friends</a></li>
         </ul>
 

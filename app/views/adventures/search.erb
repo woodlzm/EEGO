@@ -1,0 +1,35 @@
+<div class="planresult">
+  <% if (!@adventures.empty?) %>
+      <% @adventures.each do |adventure| %>
+          <table align="center">
+              <tr>
+                <td class="description"><h4>Location</h4></td>
+                <td>
+                  <p><%= adventure.location%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Number of People</h4></td>
+                <td>
+                  <p><%= adventure.num_people%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Number of Days</h4></td>
+                <td>
+                  <p><%= adventure.num_day%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Plan</h4></td>
+                <td>
+                  <textarea name="plan" class="form-control" placeholder="Please enter your plan (400characters)" rows="10" cols="40"><%= adventure.plan%><</textarea>
+                </td>
+              </tr>
+          </table>
+      <%end%>
+  <% else %>
+      <p>No Data found</p>
+      <a href="/adventures/index" class="btn btn-default">Create your Own</a>
+  <%end%>
+</div>
