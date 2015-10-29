@@ -1,13 +1,15 @@
     </div>
   </div>
   <div class="container">
+    <div class="row">
+      <div class = "col-md-10">
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
       function initialize() {
         var mapCanvas = document.getElementById('map');
         var mapOptions = {
-          center: new google.maps.LatLng(44.5403, -78.5463),
+          center: new google.maps.LatLng(34.0218579,-118.5154406),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
@@ -15,5 +17,7 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    </div>
+    </div>
   </div>
     
