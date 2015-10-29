@@ -1,9 +1,24 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-get 'googlmap' => 'welcome#googlmap', as: :googlmap
+  get 'googlmap' => 'welcome#googlmap', as: :googlmap
+  get 'home' => 'welcome#index'
+
+  get 'friends' => 'friends#index'
+  post 'friends' => 'friends#create'
+  patch 'friends' => 'friends#update'
+  delete 'friends/:id' => 'friends#destroy', as: :destroy
+  #resource :friends, except: [:index, :create, :update, :edit]
+
+  get 'googlmap' => 'welcome#googlmap'
+
+  get 'adventures/index' => 'adventures#index'
+  get 'adventures/search' => 'adventures#search'
+  post 'adventures/create' => 'adventures#create'
 
   devise_for :users
+
+  get '/notification' => 'notifications#index', as: :notification
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

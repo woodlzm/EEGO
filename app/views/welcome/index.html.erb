@@ -1,20 +1,15 @@
-
-        <ul class="pull-left">
-          <li><a href="#">New adventure</a></li>|
-          <li><a href="#">find friends</a></li>
-        </ul>
-      </div>
-    </div>
     <div class="jumbotron">
       <div class="container">
         <h1>Explore it.</h1>
         <div class="row">
         <div class="col-lg-6">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for locations...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            <form id="go_search" action="/adventures/search" method="get">
+              <input id="search_location" name="location" type="text" class="form-control" placeholder="Search for locations...">
+            </form>
+              <span class="input-group-btn">
+                <button onclick="goSearch()" class="btn btn-default" type="button">Go!</button>
+              </span>
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
       </div>
@@ -51,3 +46,10 @@
 	  <div class="container">
 	  </div>
 	</div>
+
+    <script>
+      function goSearch() {
+          var form = $("#go_search");
+          form.submit();
+      }
+    </script>

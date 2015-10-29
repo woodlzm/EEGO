@@ -11,15 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022045211) do
+ActiveRecord::Schema.define(version: 20151029004805) do
+
+  create_table "adventures", force: :cascade do |t|
+    t.string   "location"
+    t.integer  "num_people"
+    t.integer  "num_day"
+    t.string   "plan"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "uid1"
-    t.integer  "uid2"
+    t.integer  "friend_id"
     t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "sender_user_id"
+    t.string   "message"
+    t.integer  "status"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

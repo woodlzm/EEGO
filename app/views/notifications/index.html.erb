@@ -1,0 +1,24 @@
+<div>
+<% @notifications.each do |n|%>
+ <tr><p><%= User.find(n.sender_user_id).email + " wants to invite you as a friend!"%></p></tr>
+ <tr>
+  <p><%= "Message: " + n.message%></p>
+  <% if n.status == 0 %>
+  <td>
+   <%= form_tag("/friends", method: "patch") do%>
+    <%=hidden_field_tag(:sender_user_id, n.sender_user_id) %>
+    <%=text_field_tag :receiver_user_id, current_user.id ,type: :hidden %>
+    <%= text_field_tag :n_id, n.id, type: :hidden %>
+    <%= submit_tag("Accept") %>
+   <%end%>
+  </td>
+  <td>
+   <%= form_tag delete_friendship_path(n.sender_user_id), method: :delete do %>
+    <%= text_field_tag :n_id, n.id, type: :hidden %>
+    <%= submit_tag("Decline") %>
+   <% end %>
+  </td>
+  <% end %>
+ </tr>
+<%end%>
+</div>
