@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'welcome/new'
 
   get 'googlmap' => 'welcome#googlmap', as: :googlmap
   get 'home' => 'welcome#index'
@@ -8,22 +8,23 @@ Rails.application.routes.draw do
   post 'friends' => 'friends#create'
   patch 'friends' => 'friends#update'
   delete 'friends/:id' => 'friends#destroy', as: :destroy
-  #resource :friends, except: [:index, :create, :update, :edit]
+  #resource :friends, except: [:new, :create, :update, :edit]
 
   get 'googlmap' => 'welcome#googlmap'
 
   get 'adventures/index' => 'adventures#index'
+  get 'adventures/new' => 'adventures#new'
   get 'adventures/search' => 'adventures#search'
   post 'adventures/create' => 'adventures#create'
 
   devise_for :users
 
-  get '/notification' => 'notifications#index', as: :notification
+  get '/notification' => 'notifications#new', as: :notification
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#new'
   root 'welcome#index'
 
   # Example of regular route:

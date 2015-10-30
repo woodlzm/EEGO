@@ -3,6 +3,12 @@ class AdventuresController < ApplicationController
 
   def index
     redirect_to '/users/sign_in' unless user_signed_in?
+    location = params[:location]
+    @adventures = Adventure.where("user_id=#{current_user.id}")
+  end
+
+  def new
+    redirect_to '/users/sign_in' unless user_signed_in?
   end
 
   def create
@@ -17,7 +23,7 @@ class AdventuresController < ApplicationController
       @adventure.save
       redirect_to :action => 'search', :location => @location
     else
-      redirect_to '/adventures/index'
+      redirect_to '/adventures/new'
     end
   end
 

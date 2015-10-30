@@ -1,35 +1,43 @@
-<div class="planform">
-    <table align="center">
-      <form action="/adventures/create" method="post">
-        <tr>
-          <td class="description"><h4>Location</h4></td>
-          <td>
-            <input type="text" class="form-control" placeholder="1~20 characters" name="location" maxlength="20"/>
-          </td>
-          </tr>
-          <tr>
-            <td class="description"><h4>Number of People</h4></td>
-            <td>
-              <input type="text" class="form-control" placeholder="1~99" name="num_people" maxlength="2"/>
-            </td>
-          </tr>
-          <tr>
-            <td class="description"><h4>Number of Days</h4></td>
-            <td>
-              <input type="text" class="form-control" placeholder="1~99" name="num_day" maxlength="2"/>
-            </td>
-          </tr>
-          <tr>
-            <td class="description"><h4>Plan</h4></td>
-            <td>
-              <textarea name="plan" class="form-control" placeholder="Please enter your plan (400characters)" rows="10" cols="40"></textarea>
-            </td>
-          </tr>
-        <tr>
-          <td><a href="/home" class="btn btn-default">Cancel</a></td>
-          <td><button class="btn btn-default">Submit</button></td>
-        </tr>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-      </form>
-    </table>
+<div class="planresult">
+  <div align="center">
+    <a href="/adventures/new" class="btn btn-default">Create New Adventure</a>
+  </div>
+  <% if (!@adventures.empty?) %>
+      <% count=1%>
+      <% @adventures.each do |adventure| %>
+          <table align="center">
+            <tr ><h2>Plan <%= count%></h2></tr>
+              <tr>
+                <td class="description"><h4>Location</h4></td>
+                <td text-align="left">
+                  <p><%= adventure.location%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Number of People</h4></td>
+                <td text-align="left">
+                  <p><%= adventure.num_people%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Number of Days</h4></td>
+                <td text-align="left">
+                  <p><%= adventure.num_day%></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="description"><h4>Plan</h4></td>
+                <td text-align="left">
+                  <textarea disabled name="plan" style="border: none" placeholder="Please enter your plan (400characters)" rows="10" cols="40"><%= adventure.plan%><</textarea>
+                </td>
+              </tr>
+          </table>
+          <hr border-width="2px";>
+          <% count +=1%>
+      <%end%>
+  <% else %>
+      <div align="center">
+          <p>No Data found</p>
+      </div>
+  <%end%>
 </div>
