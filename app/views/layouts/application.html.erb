@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
     <title>EasyGo!</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -35,17 +35,19 @@
             padding:10px 15px 0 15px;
         }
 
-
     </style>
   </head>
 
   <body>
     <div class="nav navbar-default navbar-fixed-top">
       <div class="container">
+        
         <ul class="pull-left">
+          
           <li><a href="/home">Home</a></li>|
           <li><a href="/adventures/index">New adventure</a></li>|
           <li><a href="/friends">find friends</a></li>
+      
         </ul>
 
         <ul class="pull-right">
@@ -58,7 +60,6 @@
           <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
         <% end %>
          </ul>
-
       </div>
     </div>
 
