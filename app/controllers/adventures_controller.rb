@@ -19,7 +19,7 @@ class AdventuresController < ApplicationController
       @num_people = params[:num_people]
       @num_day = params[:num_day]
       @plan = params[:plan]
-      @adventure  = Adventure.new({location: @location, num_people: @num_people, num_day: @num_day, plan: @plan})
+      @adventure  = Adventure.new({user_id: current_user.id, location: @location, num_people: @num_people, num_day: @num_day, plan: @plan})
       @adventure.save
       redirect_to :action => 'search', :location => @location
     else
