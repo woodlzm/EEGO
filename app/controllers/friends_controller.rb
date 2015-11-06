@@ -38,9 +38,10 @@ class FriendsController < ApplicationController
       @r_friendship[0].save
       invitation_msg = '"% want to add you as a friend%"'
       @notifications = Notification.where("user_id=#{current_user.id} AND sender_user_id=#{friend_params} AND message LIKE #{invitation_msg}")
-      @notifications.each do |n|
-	n.status = 1
-        n.save
+      if @notifications
+        @notifications.each do |n|
+          n.destroy
+        end
       end
       redirect_to :back
     end
@@ -55,9 +56,10 @@ class FriendsController < ApplicationController
     @reverse_f = Friendship.new({user_id: params[:receiver_user_id], friend_id: params[:sender_user_id], status: 1})
     @reverse_f.save    #should exist cases to deal with error
     @notification = Notification.find(params[:n_id])
-    @notification.status = 1
-    @notification.save
-    redirect_to '/friends'
+    if @notification
+      @notification.destroy
+    end
+    redirect_to :back
   end
 
   def destroy
@@ -66,9 +68,10 @@ class FriendsController < ApplicationController
       @friendship.destroy
     end
     @notification = Notification.find(params[:n_id])
-    @notification.status = 1
-    @notification.save
-    redirect_to '/friends'
+    if @notification
+      @notification.destroy
+    end
+    redirect_to :back
   end
 
 private
