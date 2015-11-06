@@ -1,7 +1,4 @@
 <div class="planresult">
-  <div align="center">
-    <a href="/adventures/new" class="btn btn-default">Create New Adventure</a>
-  </div>
   <% if (!@adventures.empty?) %>
       <% count=1%>
       <% @adventures.each do |adventure| %>
@@ -37,7 +34,10 @@
       <%end%>
   <% else %>
       <div align="center">
-          <p>No Data found</p>
+          <p class = >No Data found</p>
       </div>
   <%end%>
+  <div align="center">
+    <a href="/adventures/new" class="btn btn-default">Create New Adventure</a>
+  </div>
 </div>
