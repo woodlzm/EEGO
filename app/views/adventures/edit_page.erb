@@ -32,8 +32,8 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
       </form>
         <tr>
-          <td><a href="/home" class="btn btn-default">Cancel</a></td>
-          <td><button onclick="check_form()" class="btn btn-default">Submit</button></td>
+          <td><button onclick="location.href = '/adventures/index'" class="btn btn-primary">Cancel</button></td>
+          <td><button onclick="check_form()" class="btn btn-primary">Submit</button></td>
         </tr>
 
     </table>

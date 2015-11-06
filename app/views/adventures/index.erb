@@ -14,10 +14,7 @@
             </tr>
             <tr >
               <td class="description"><h2>Plan <%= count%></h2></td>
-              <td>
-                <button onclick="edit_adventure(this)" class="btn btn-default">Edit</button>
-                <button onclick="delete_adventure(this)" class="btn btn-default">Delete</button>
-              </td>
+              <td></td>
             </tr>
             <tr>
               <td class="description"><h4>Location</h4></td>
@@ -43,6 +40,14 @@
                 <textarea disabled name="plan" style="border: none" rows="10" cols="40"><%= adventure.plan%></textarea>
               </td>
             </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <button onclick="edit_adventure(this)" class="btn btn-primary">Edit</button>
+                <button onclick="delete_adventure(this)" class="btn btn-primary">Delete</button>
+              </td>
+            </tr>
           </table>
           <hr border-width="2px";>
           <% count +=1%>
@@ -55,7 +60,7 @@
 </div>
 
 <div align="center">
-  <a href="/adventures/new" class="btn btn-default">Create New Adventure</a>
+  <button onclick="location.href = '/adventures/new'" class="btn btn-primary">Create New Adventure</button>
 </div>
 </div>
 
