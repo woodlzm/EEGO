@@ -57,7 +57,7 @@ class FriendsController < ApplicationController
     @notification = Notification.find(params[:n_id])
     @notification.status = 1
     @notification.save
-    redirect_to '/friends'
+    redirect_to :back
   end
 
   def destroy
@@ -68,7 +68,7 @@ class FriendsController < ApplicationController
     @notification = Notification.find(params[:n_id])
     @notification.status = 1
     @notification.save
-    redirect_to '/friends'
+    redirect_to :back
   end
 
 private

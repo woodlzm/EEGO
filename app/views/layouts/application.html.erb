@@ -35,13 +35,17 @@
             padding:10px 15px 0 15px;
         }
 
+        .body-padding {
+            padding-top: 30px;
+        }
+
     </style>
   </head>
 
   <body>
     <div class="nav navbar-default navbar-fixed-top">
-      <div class="container">
         
+      <div class="container">
         <ul class="pull-left">
           
           <li><a href="/home">Home</a></li>|
@@ -63,7 +67,8 @@
       </div>
     </div>
 
-  	<%= yield %>
+    <div class="body-padding">
+    <%= yield %>
 </body>
 </html>
 
