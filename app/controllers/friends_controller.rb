@@ -38,9 +38,10 @@ class FriendsController < ApplicationController
       @r_friendship[0].save
       invitation_msg = '"% want to add you as a friend%"'
       @notifications = Notification.where("user_id=#{current_user.id} AND sender_user_id=#{friend_params} AND message LIKE #{invitation_msg}")
-      @notifications.each do |n|
-	n.status = 1
-        n.save
+      if @notifications
+        @notifications.each do |n|
+          n.destroy
+        end
       end
       redirect_to :back
     end

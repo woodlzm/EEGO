@@ -2,19 +2,23 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
+<!--
       <form id="search_friends" action="/friends" method="get">
         <input name="search" type="text" class="form-control" placeholder="Find new friends...">
       </form>
       <span class="input-group-btn">
         <button onclick="searchFriend()" class="btn btn-default" type="button">Go!</button>
       </span>
-<!--
-    <%= form_tag '/friends', method: "get" do |f| %>
-      <%= label_tag :search %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", name: nil %>
-    <% end %>
 -->
+      <%= form_tag '/friends', id: "search_friends", method: "get" do |f| %>
+        <%= label_tag :search %>
+        <%= text_field_tag :search, params[:search] %>
+      <% end %>
+      <span class="input-group-btn">
+        <button onclick="searchFriend()" class="btn btn-default" type="button">Go!</button>
+      </span>
+
+
       </div>
     </div>
   </div>
