@@ -1,8 +1,17 @@
 <div class="planresult">
   <% if (!@adventures.empty?) %>
       <% count=1%>
-      <% @adventures.each do |adventure| %>
-          <table align="center">
+      <table align="center" width="800">
+        <tr>
+          <th>Plan</th>
+          <th>Location</th>
+          <th>People</th>
+          <th>Day</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Show Detail</th>
+        </tr>
+        <% @adventures.each do |adventure| %>
             <tr>
               <form method="post">
                 <input type="hidden" name="location" value="<%= adventure.location%>"/>
@@ -11,46 +20,15 @@
                 <input type="hidden" name="plan" value="<%= adventure.plan%>" />
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
               </form>
+              <td><%= count%></td>
+              <td text-align="left"><p><%= adventure.location%></p></td>
+              <td text-align="left"><p><%= adventure.num_people%></p></td>
+              <td text-align="left"><p><%= adventure.num_day%></p></td>
+              <td text-align="left"><button onclick="edit_adventure(this)" class="btn btn-xs btn-primary">Edit</button></td>
+              <td text-align="left"><button onclick="delete_adventure(this)" class="btn btn-xs btn-primary">Delete</button></td>
+              <td text-align="left"><button onclick="show_detail(this)" class="btn btn-xs btn-primary">More</button></td>
+              <% count +=1%>
             </tr>
-            <tr >
-              <td class="description"><h2>Plan <%= count%></h2></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="description"><h4>Location</h4></td>
-              <td text-align="left">
-                <p><%= adventure.location%></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="description"><h4>Number of People</h4></td>
-              <td text-align="left">
-                <p><%= adventure.num_people%></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="description"><h4>Number of Days</h4></td>
-              <td text-align="left">
-                <p><%= adventure.num_day%></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="description"><h4>Plan</h4></td>
-              <td text-align="left">
-                <textarea disabled name="plan" style="border: none" rows="10" cols="40"><%= adventure.plan%></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              </td>
-              <td>
-                <button onclick="edit_adventure(this)" class="btn btn-primary">Edit</button>
-                <button onclick="delete_adventure(this)" class="btn btn-primary">Delete</button>
-              </td>
-            </tr>
-          </table>
-          <hr border-width="2px";>
-          <% count +=1%>
       <%end%>
   <% else %>
       <div align="center">
@@ -66,14 +44,21 @@
 
 <script>
   function delete_adventure(delete_button) {
-      var form = $(delete_button).parent().parent().parent().find("form");
+      var form = $(delete_button).parent().parent().find("form");
       form.attr('action', "/adventures/delete");
       form.submit();
   }
 
   function edit_adventure(edit_button) {
-      var form = $(edit_button).parent().parent().parent().find("form");
+      var form = $(edit_button).parent().parent().find("form");
       form.attr('action', "/adventures/edit_page");
+      form.submit();
+  }
+
+  function show_detail(show_button) {
+      var form = $(show_button).parent().parent().find("form");
+      form.attr('action', "/adventures/show_detail");
+      form.attr('method', "get");
       form.submit();
   }
 </script>

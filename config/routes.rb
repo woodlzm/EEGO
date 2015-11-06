@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'adventures/delete' => 'adventures#delete'
   post 'adventures/edit_page' => 'adventures#edit_page'
   post 'adventures/edit' => 'adventures#edit'
+  get 'adventures/show_detail' => 'adventures#show_detail'
 
   devise_for :users
 

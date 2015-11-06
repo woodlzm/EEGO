@@ -70,4 +70,12 @@ class AdventuresController < ApplicationController
     end
     redirect_to '/adventures/index'
   end
+
+  def show_detail
+    @user = User.find(current_user.id)
+    @location = params[:location]
+    @num_people = params[:num_people]
+    @num_day = params[:num_day]
+    @plan = params[:plan]
+  end
 end
