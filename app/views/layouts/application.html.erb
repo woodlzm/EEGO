@@ -48,15 +48,16 @@
       <div class="container">
         <ul class="pull-left">
           
-          <li><a href="/home">Home</a></li>|
-          <li><a href="/adventures/index">My adventure</a></li>|
-          <li><a href="/friends">find friends</a></li>
+          <li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>|
+          <li><a href="/adventures/index"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> My adventure</a></li>|
+          <li><a href="/friends"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> find friends</a></li>|
+          <li><a href="/notification"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> message</a></li>
       
         </ul>
 
         <ul class="pull-right">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
+          Hello <strong><%= current_user.email %></strong>.
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
