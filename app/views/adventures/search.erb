@@ -19,9 +19,9 @@
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
               </form>
               <td><%= count%></td>
-              <td text-align="left"><p><%= adventure.location%></p></td>
-              <td text-align="left"><p><%= adventure.num_people%></p></td>
-              <td text-align="left"><p><%= adventure.num_day%></p></td>
+              <td text-align="left"><%= adventure.location%></td>
+              <td text-align="left"><%= adventure.num_people%></td>
+              <td text-align="left"><%= adventure.num_day%></td>
               <td text-align="left"><button onclick="show_detail(this)" class="btn btn-xs btn-primary">More</button></td>
               <% count +=1%>
             </tr>

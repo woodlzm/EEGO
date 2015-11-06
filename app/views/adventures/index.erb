@@ -21,25 +21,26 @@
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
               </form>
               <td><%= count%></td>
-              <td text-align="left"><p><%= adventure.location%></p></td>
-              <td text-align="left"><p><%= adventure.num_people%></p></td>
-              <td text-align="left"><p><%= adventure.num_day%></p></td>
+              <td text-align="left"><%= adventure.location%></td>
+              <td text-align="left"><%= adventure.num_people%></td>
+              <td text-align="left"><%= adventure.num_day%></td>
               <td text-align="left"><button onclick="edit_adventure(this)" class="btn btn-xs btn-primary">Edit</button></td>
               <td text-align="left"><button onclick="delete_adventure(this)" class="btn btn-xs btn-primary">Delete</button></td>
               <td text-align="left"><button onclick="show_detail(this)" class="btn btn-xs btn-primary">More</button></td>
               <% count +=1%>
             </tr>
+            </table>
       <%end%>
   <% else %>
       <div align="center">
-          <p class = >No Data found</p>
+          <p>No Data found</p>
       </div>
   <%end%>
-</div>
 
 <div align="center">
   <button onclick="location.href = '/adventures/new'" class="btn btn-primary">Create New Adventure</button>
 </div>
+
 </div>
 
 <script>
