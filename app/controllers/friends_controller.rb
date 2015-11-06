@@ -55,8 +55,9 @@ class FriendsController < ApplicationController
     @reverse_f = Friendship.new({user_id: params[:receiver_user_id], friend_id: params[:sender_user_id], status: 1})
     @reverse_f.save    #should exist cases to deal with error
     @notification = Notification.find(params[:n_id])
-    @notification.status = 1
-    @notification.save
+    if @notification
+      @notification.destroy
+    end
     redirect_to :back
   end
 
@@ -66,8 +67,9 @@ class FriendsController < ApplicationController
       @friendship.destroy
     end
     @notification = Notification.find(params[:n_id])
-    @notification.status = 1
-    @notification.save
+    if @notification
+      @notification.destroy
+    end
     redirect_to :back
   end
 
