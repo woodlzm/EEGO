@@ -31,7 +31,43 @@ class AdventuresController < ApplicationController
     @user = User.find(current_user.id)
     location = params[:location]
     @adventures = Adventure.where("location LIKE ?","#{location}")
-
   end
 
+  def delete
+    @user = User.find(current_user.id)
+    @location = params[:location]
+    @num_people = params[:num_people]
+    @num_day = params[:num_day]
+    @plan = params[:plan]
+    @adventure  = Adventure.find_by({user_id: current_user.id, location: @location, num_people: @num_people, num_day: @num_day, plan: @plan})
+    @adventure.destroy
+    redirect_to '/adventures/index'
+  end
+
+  def edit_page
+    @user = User.find(current_user.id)
+    @location = params[:location]
+    @num_people = params[:num_people]
+    @num_day = params[:num_day]
+    @plan = params[:plan]
+  end
+
+  def edit
+    @user = User.find(current_user.id)
+    @pre_location = params[:pre_location]
+    @pre_num_people = params[:pre_num_people]
+    @pre_num_day = params[:pre_num_day]
+    @pre_plan = params[:pre_plan]
+    @pre_adventure  = Adventure.find_by({user_id: current_user.id, location: @pre_location, num_people: @pre_num_people, num_day: @pre_num_day, plan: @pre_plan})
+    @pre_adventure.destroy
+    if (!params[:location].empty?) && (!params[:num_people].empty?) && (!params[:num_day].empty?) && (!params[:plan].empty?)
+      @location = params[:location]
+      @num_people = params[:num_people]
+      @num_day = params[:num_day]
+      @plan = params[:plan]
+      @adventure  = Adventure.new({user_id: current_user.id, location: @location, num_people: @num_people, num_day: @num_day, plan: @plan})
+      @adventure.save
+    end
+    redirect_to '/adventures/index'
+  end
 end

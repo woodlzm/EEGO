@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 .idea
+/load_test
+.gitignore
+

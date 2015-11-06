@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'adventures/new' => 'adventures#new'
   get 'adventures/search' => 'adventures#search'
   post 'adventures/create' => 'adventures#create'
+  post 'adventures/delete' => 'adventures#delete'
+  post 'adventures/edit_page' => 'adventures#edit_page'
+  post 'adventures/edit' => 'adventures#edit'
 
   devise_for :users
 
