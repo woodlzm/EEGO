@@ -34,18 +34,20 @@
           <div class="row">
             <td><%= user.email %></td>
             <td>
-              <span class="pull-right">
               <% if !is_friend?(user) %>
                 <% if is_pending_request?(user) %>
-	          Pending Request
+                  <span class="input-group-btn">
+                    <button class="btn btn-xs btn-default pull-right" type="button" disabled>&nbsp;&nbsp;Pending&nbsp;</button>
+                  </span>
                 <% else %>
-	          <%= form_tag '/friends', method: :post do %>
+	          <%= form_tag '/friends', method: :post, id: "request_form" do %>
 	            <%= text_field_tag :friend, user.id, type: :hidden %>
-	            <%= submit_tag "Send Request" %>
                   <% end %>
+                  <span class="input-group-btn">
+                    <button onclick="sendRequest()" class="btn btn-xs btn-primary pull-right" type="button">&nbsp;Request&nbsp;</button>
+                  </span>
 	        <% end %>
               <% end %>
-              </span>
             </td>
           </div>
         <% end %>
@@ -67,6 +69,11 @@
 <script>
   function searchFriend() {
     var form = $("#search_friends");
+    form.submit();
+  }
+
+  function sendRequest() {
+    var form = $("#request_form");
     form.submit();
   }
 </script>
