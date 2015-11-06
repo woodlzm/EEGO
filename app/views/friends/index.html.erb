@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
+
       <div class="input-group">
       <form id="search_friends" action="/friends" method="get">
         <input name="search" type="text" class="form-control" placeholder="Find new friends...">
@@ -9,12 +10,15 @@
         <button onclick="searchFriend()" class="btn btn-default" type="button">Go!</button>
       </span>
 <!--
-    <%= form_tag '/friends', method: "get" do |f| %>
-      <%= label_tag :search %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", name: nil %>
-    <% end %>
+      <%= form_tag '/friends', id: "search_friends", method: "get" do |f| %>
+        <%= label_tag :search %>
+        <%= text_field_tag :search, params[:search] %>
+      <% end %>
+      <span class="input-group-btn">
+        <button onclick="searchFriend()" class="btn btn-default" type="button">Go!</button>
+      </span>
 -->
+
       </div>
     </div>
   </div>
@@ -30,16 +34,18 @@
           <div class="row">
             <td><%= user.email %></td>
             <td>
-            <% if !is_friend?(user) %>
-              <% if is_pending_request?(user) %>
-	        Pending Request
-              <% else %>
-	        <%= form_tag '/friends', method: :post do %>
-	          <%= text_field_tag :friend, user.id, type: :hidden %>
-	          <%= submit_tag "Send Request" %>
-                <% end %>
-	      <% end %>
-            <% end %>
+              <span class="pull-right">
+              <% if !is_friend?(user) %>
+                <% if is_pending_request?(user) %>
+	          Pending Request
+                <% else %>
+	          <%= form_tag '/friends', method: :post do %>
+	            <%= text_field_tag :friend, user.id, type: :hidden %>
+	            <%= submit_tag "Send Request" %>
+                  <% end %>
+	        <% end %>
+              <% end %>
+              </span>
             </td>
           </div>
         <% end %>
