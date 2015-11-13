@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   get 'adventures/show_detail' => 'adventures#show_detail'
 
   # group
-  get 'group/index' => 'group#index'
-  get 'group/new' => 'group#new'
-  post 'group/create_submit' => 'group#create_submit'
-  post 'group/show_detail' => 'group#show_detail'
-  post 'group/delete' => 'group#delete'
+  #get 'group/index' => 'group#index'
+  #get 'group/new' => 'group#new'
+  #post 'group/create_submit' => 'group#create_submit'
+  post 'groups/show_detail' => 'group#show_detail'
+  #post 'group/delete' => 'group#delete'
 
   devise_for :users
 

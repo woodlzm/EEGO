@@ -3,9 +3,12 @@ class GroupsController < ApplicationController
 
   def index
     @group_entries = Group.where("user_id=#{current_user.id}")
-    @groups_names = []
+    @groups = []
     @group_entries.each do |g|
-      @groups_names.push(g.name)
+      @cur_group = {name: g.name, num_people: Group.where("name=\"#{g.name}\"").count};
+      #@cur_group.name = g.name
+      #@cur_group.num_people = Group.where("name=#{g.name}").count
+      @groups.push(@cur_group)
     end
   end
 
