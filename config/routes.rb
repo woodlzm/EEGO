@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   post 'adventures/delete' => 'adventures#delete'
   post 'adventures/edit_page' => 'adventures#edit_page'
   post 'adventures/edit' => 'adventures#edit'
+  get 'adventures/show_detail' => 'adventures#show_detail'
+
+  # group
+  get 'group/index' => 'group#index'
+  get 'group/new' => 'group#new'
+  post 'group/create_submit' => 'group#create_submit'
+  post 'group/show_detail' => 'group#show_detail'
+  post 'group/delete' => 'group#delete'
 
   devise_for :users
 

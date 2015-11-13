@@ -1,41 +1,44 @@
 <div class="planresult">
   <% if (!@adventures.empty?) %>
       <% count=1%>
-      <% @adventures.each do |adventure| %>
-          <table align="center">
-            <tr ><h2>Plan <%= count%></h2></tr>
-              <tr>
-                <td class="description"><h4>Location</h4></td>
-                <td text-align="left">
-                  <p><%= adventure.location%></p>
-                </td>
-              </tr>
-              <tr>
-                <td class="description"><h4>Number of People</h4></td>
-                <td text-align="left">
-                  <p><%= adventure.num_people%></p>
-                </td>
-              </tr>
-              <tr>
-                <td class="description"><h4>Number of Days</h4></td>
-                <td text-align="left">
-                  <p><%= adventure.num_day%></p>
-                </td>
-              </tr>
-              <tr>
-                <td class="description"><h4>Plan</h4></td>
-                <td text-align="left">
-                  <textarea disabled name="plan" style="border: none" placeholder="Please enter your plan (400characters)" rows="10" cols="40"><%= adventure.plan%><</textarea>
-                </td>
-              </tr>
-          </table>
-          <hr border-width="2px";>
-          <% count +=1%>
-      <%end%>
+      <table align="center" width="800">
+        <tr>
+          <th>Plan</th>
+          <th>Location</th>
+          <th>People</th>
+          <th>Day</th>
+          <th>Show Detail</th>
+        </tr>
+        <% @adventures.each do |adventure| %>
+            <tr>
+              <form method="post">
+                <input type="hidden" name="location" value="<%= adventure.location%>"/>
+                <input type="hidden" name="num_people" value="<%= adventure.num_people%>"/>
+                <input type="hidden" name="num_day" value="<%= adventure.num_day%>" />
+                <input type="hidden" name="plan" value="<%= adventure.plan%>" />
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+              </form>
+              <td><%= count%></td>
+              <td text-align="left"><%= adventure.location%></td>
+              <td text-align="left"><%= adventure.num_people%></td>
+              <td text-align="left"><%= adventure.num_day%></td>
+              <td text-align="left"><button onclick="show_detail(this)" class="btn btn-xs btn-primary">More</button></td>
+              <% count +=1%>
+            </tr>
+        <%end%>
   <% else %>
       <div align="center">
-          <p>No Data found</p>
-          <a href="/adventures/index" class="btn btn-default">Create your Own</a>
+        <p>No Data found</p>
+        <a href="/adventures/index" class="btn btn-default">Create your Own</a>
       </div>
   <%end%>
 </div>
+
+<script>
+    function show_detail(show_button) {
+        var form = $(show_button).parent().parent().find("form");
+        form.attr('action', "/adventures/show_detail");
+        form.attr('method', "get");
+        form.submit();
+    }
+</script>
