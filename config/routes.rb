@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/new'
 
+  resources :groups
+
   get 'googlmap' => 'welcome#googlmap', as: :googlmap
   get 'home' => 'welcome#index'
 
