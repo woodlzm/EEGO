@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
     @group_entries.each do |g|
       @cur_group = {name: g.name, num_people: Group.where("name=\"#{g.name}\"").count};
       #@cur_group.name = g.name
-      #@cur_group.num_people = Group.where("name=#{g.name}").count
+      # @cur_group.num_people = Group.where("name=#{g.name}").count
       @groups.push(@cur_group)
     end
   end
@@ -32,4 +32,13 @@ class GroupsController < ApplicationController
     end
     redirect_to '/groups'
   end
+
+  def delete
+    @user = User.find(current_user.id)
+    @group_name = params[:group_name]
+    @groups  = Group.find_by({name: @group_name})
+    @groups.destroy
+    redirect_to '/groups/index'
+  end
+
 end
