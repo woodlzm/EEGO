@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
   def delete
     @user = User.find(current_user.id)
     @group_name = params[:group_name]
-    @groups  = Group.find_by({name: @group_name})
+    @groups  = Group.find_by({name: @group_name, user_id: current_user.id})
     @groups.destroy
     redirect_to :back
   end
