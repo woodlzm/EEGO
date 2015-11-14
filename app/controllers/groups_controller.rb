@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     @group_name = params[:group_name]
     @groups  = Group.find_by({name: @group_name})
     @groups.destroy
-    redirect_to '/groups/index'
+    redirect_to :back
   end
 
 end
