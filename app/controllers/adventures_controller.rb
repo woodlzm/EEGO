@@ -30,7 +30,7 @@ class AdventuresController < ApplicationController
   def search
     @user = User.find(current_user.id)
     location = params[:location]
-    @adventures = Adventure.where("location LIKE ?","#{location}")
+    @adventures = Adventure.where("location LIKE ?","%#{location}%")
   end
 
   def delete
