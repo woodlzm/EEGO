@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="ec2-54-148-61-114.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+<!--
+   <arrivalphase phase="4" duration="30" unit="second">
+     <users arrivalrate="8" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="5" duration="30" unit="second">
+     <users arrivalrate="16" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="6" duration="30" unit="second">
+     <users arrivalrate="32" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="7" duration="30" unit="second">
+     <users arrivalrate="64" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="8" duration="30" unit="second">
+     <users arrivalrate="128" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="9" duration="30" unit="second">
+     <users arrivalrate="256" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="10" duration="30" unit="second">
+     <users arrivalrate="512" unit="second"></users>
+   </arrivalphase>
+-->
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+
+      <!-- start out at the dashboard. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at posts -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit the New Community form, as a user would do.  -->
+      <request>
+        <http url='/users/sign_up' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is filling out new community form -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a random number to make a unique community name -->
+      <setdynvars sourcetype="random_string" length="6">
+        <var name="random_user_name" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="12">
+        <var name="password" />
+      </setdynvars>
+
+      <request subst="true">
+        <http
+          url='/users'
+          version='1.1'
+          method='POST'
+          contents='user%5Bemail%5D=%%_random_user_name%%%40cs219.test&amp;user%5Bpassword%5D=%%_password%%&amp;commit=Sign+up'>
+        </http>
+      </request>
+
+      <request>
+        <http url='/friends?search=' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is fillinf in new submission form -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- send 4 friend requests to specific users -->
+      <request subst="true">
+        <http
+          url='/friends'
+          version='1.1'
+          method='POST'
+          contents='friend=1'>
+        </http>
+      </request>
+
+      <request subst="true">
+        <http
+          url='/friends'
+          version='1.1'
+          method='POST'
+          contents='friend=2'>
+        </http>
+      </request>
+
+      <request subst="true">
+        <http
+          url='/friends'
+          version='1.1'
+          method='POST'
+          contents='friend=3'>
+        </http>
+      </request>
+
+      <request subst="true">
+        <http
+          url='/friends'
+          version='1.1'
+          method='POST'
+          contents='friend=4'>
+        </http>
+      </request>
+
+      <!-- group operations -->
+      <thinktime value="3" random="true"></thinktime>
+
+      <request>
+        <http url='/groups' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/groups/new' version='1.1' method='GET'></http>
+      </request>
+
+      <setdynvars sourcetype="random_string" length="10">
+        <var name="random_group_name" />
+      </setdynvars>
+
+      <thinktime value="8" random="true"></thinktime>
+
+      <request subst="true">
+        <http
+          url='/groups'
+          version='1.1'
+          method='POST'
+          contents='group_name=%%_random_group_name%%&amp;1=1&amp;2=1&amp;3=1&amp;4=1' >
+        </http>
+      </request>
+
+      <request>
+        <http url='/groups' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- start adventure operations -->
+      <thinktime value="5" random="true"></thinktime>
+
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="5" random="true"></thinktime>
+
+      <setdynvars sourcetype="random_string" length="15">
+        <var name="random_location" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="1" end="99" >
+        <var name="random_days" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="1" end="99" >
+        <var name="random_travellers" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="300" >
+        <var name="random_content" />
+      </setdynvars>
+
+      <request subst="true">
+        <http
+          url='/adventures/create'
+          version='1.1'
+          method='POST'
+          contents='location=%%_random_location%%&amp;num_people=%%_random_travellers%%&amp;num_day=%%_random_days%%&amp;plan=%%_random_content%%' >
+        </http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=%%_random_location%%' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/home' version='1.1' method='GET' ></http>
+      </request>
+
+      <thinktime value="3" random="true"></thinktime>
+
+      <request>
+        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
+      </request>
+
+    </session>
+  </sessions>
+</tsung>
