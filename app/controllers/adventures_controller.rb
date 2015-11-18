@@ -59,8 +59,12 @@ class AdventuresController < ApplicationController
     @pre_num_day = params[:pre_num_day]
     @pre_plan = params[:pre_plan]
     @adventure = Adventure.find_by({user_id: current_user.id, location: @pre_location, num_people: @pre_num_people, num_day: @pre_num_day, plan: @pre_plan})
-    if (!params[:location].empty?) && (!params[:num_people].empty?) && (!params[:num_day].empty?) && (!params[:plan].empty?)
-      @adventure.update_attributes(:location => params[:location], :num_people => params[:num_people], :num_day => params[:num_day], :plan => params[:plan])
+    location = params[:location]
+    num_people= params[:num_people]
+    num_day = params[:num_day]
+    plan = params[:plan]
+    if (!location.empty?) && (!num_people.empty?) && (!num_day.empty?) && (!plan.empty?)
+      @adventure.update_attributes(:location => location, :num_people => num_people, :num_day => num_day, :plan => plan)
     end
     redirect_to '/adventures/index'
   end
