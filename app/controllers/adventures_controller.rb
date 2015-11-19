@@ -77,3 +77,4 @@ class AdventuresController < ApplicationController
     @plan = params[:plan]
   end
 end
+ 
