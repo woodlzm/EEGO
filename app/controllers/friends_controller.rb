@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
 
   def index
     if params[:search] != nil
-      @users = User.search(params[:search]) if stale?([User.all])
+      @users = User.search(params[:search])
       @no_user = 0
       if @users.empty?
         @no_user = 1
