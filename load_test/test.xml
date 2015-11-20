@@ -103,10 +103,6 @@
       <request>
         <http url='/friends?search=' version='1.1' method='GET'></http>
       </request>
-      <!-- 3 -->
-      <request>
-        <http url='/friends?search=' version='1.1' method='GET'></http>
-      </request>
 
       <!-- wait for up to 2 seconds, user is fillinf in new submission form -->
       <thinktime value="2" random="true"></thinktime>
@@ -130,23 +126,23 @@
         </http>
       </request>
 
-      <request subst="true">
-        <http
-                url='/friends'
-                version='1.1'
-                method='POST'
-                contents='friend=3'>
-        </http>
-      </request>
+      <!--<request subst="true">-->
+        <!--<http-->
+                <!--url='/friends'-->
+                <!--version='1.1'-->
+                <!--method='POST'-->
+                <!--contents='friend=3'>-->
+        <!--</http>-->
+      <!--</request>-->
 
-      <request subst="true">
-        <http
-                url='/friends'
-                version='1.1'
-                method='POST'
-                contents='friend=4'>
-        </http>
-      </request>
+      <!--<request subst="true">-->
+        <!--<http-->
+                <!--url='/friends'-->
+                <!--version='1.1'-->
+                <!--method='POST'-->
+                <!--contents='friend=4'>-->
+        <!--</http>-->
+      <!--</request>-->
 
       <!-- group operations -->
       <thinktime value="3" random="true"></thinktime>
@@ -228,18 +224,6 @@
       <request>
         <http url='/adventures/index' version='1.1' method='GET' ></http>
       </request>
-      <!-- 3 -->
-      <request>
-        <http url='/adventures/index' version='1.1' method='GET' ></http>
-      </request>
-      <!-- 4 -->
-      <request>
-        <http url='/adventures/index' version='1.1' method='GET' ></http>
-      </request>
-      <!-- 5 -->
-      <request>
-        <http url='/adventures/index' version='1.1' method='GET' ></http>
-      </request>
 
       <thinktime value="3" random="true"></thinktime>
 
@@ -257,42 +241,6 @@
         <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
       </request>
       <!-- 2 -->
-      <request>
-        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
-      </request>
-      <!-- 3 -->
-      <request>
-        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
-      </request>
-      <!-- 4 -->
-      <request>
-        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
-      </request>
-
-      <request>
-        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
-      </request>
-      <!-- 5 -->
       <request>
         <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
       </request>
