@@ -4,6 +4,7 @@ class FriendsController < ApplicationController
   def index
     if params[:search] != nil
       @users = User.search(params[:search])
+      expires_in 1.minutes
       @no_user = 0
       if @users.empty?
         @no_user = 1
@@ -12,7 +13,9 @@ class FriendsController < ApplicationController
       @friends = current_user.friendships
       @users = []
       @friends.each do |friend|
-        @users.push User.find(friend.friend_id) if friend.status == 1
+        if stale? (User.all)
+          @users.push User.find(friend.friend_id) if friend.status == 1
+        end
       end
       if !@users.empty?
         @no_user = 0
