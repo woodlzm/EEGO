@@ -13,7 +13,6 @@ class AdventuresController < ApplicationController
 
   def create
     redirect_to '/users/sign_in' unless user_signed_in?
-    @user = User.find(current_user.id)
     if (!params[:location].empty?) && (!params[:num_people].empty?) && (!params[:num_day].empty?) && (!params[:plan].empty?)
       @location = params[:location]
       @num_people = params[:num_people]
@@ -28,13 +27,11 @@ class AdventuresController < ApplicationController
   end
 
   def search
-    @user = User.find(current_user.id)
     location = params[:location]
     @adventures = Adventure.where("location LIKE ?","%#{location}%") if stale?([Adventure.all])
   end
 
   def delete
-    @user = User.find(current_user.id)
     @location = params[:location]
     @num_people = params[:num_people]
     @num_day = params[:num_day]
@@ -45,7 +42,6 @@ class AdventuresController < ApplicationController
   end
 
   def edit_page
-    @user = User.find(current_user.id)
     @location = params[:location]
     @num_people = params[:num_people]
     @num_day = params[:num_day]
@@ -53,7 +49,6 @@ class AdventuresController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
     @pre_location = params[:pre_location]
     @pre_num_people = params[:pre_num_people]
     @pre_num_day = params[:pre_num_day]
@@ -70,7 +65,6 @@ class AdventuresController < ApplicationController
   end
 
   def show_detail
-    @user = User.find(current_user.id) if stale?([User.all])
     @location = params[:location]
     @num_people = params[:num_people]
     @num_day = params[:num_day]
