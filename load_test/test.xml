@@ -85,6 +85,7 @@
         <var name="password" />
       </setdynvars>
 
+<<<<<<< HEAD
       <request subst="true">
         <http
                 url='/users'
@@ -100,6 +101,27 @@
         <http url='/friends?search=' version='1.1' method='GET'></http>
       </request>
       <!-- 2 -->
+=======
+      <!--<request subst="true">-->
+        <!--<http-->
+                <!--url='/users'-->
+                <!--version='1.1'-->
+                <!--method='POST'-->
+                <!--contents='user%5Bemail%5D=%%_random_user_name%%%40cs219.test&amp;user%5Bpassword%5D=%%_password%%&amp;commit=Sign+up'>-->
+        <!--</http>-->
+      <!--</request>-->
+
+      <!-- all friend list -->
+      <!-- 1 -->
+      <request>
+        <http url='/friends?search=' version='1.1' method='GET'></http>
+      </request>
+      <!-- 2 -->
+      <request>
+        <http url='/friends?search=' version='1.1' method='GET'></http>
+      </request>
+      <!-- 3 -->
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
       <request>
         <http url='/friends?search=' version='1.1' method='GET'></http>
       </request>
@@ -108,6 +130,7 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- send 4 friend requests to specific users -->
+      <!--
       <request subst="true">
         <http
                 url='/friends'
@@ -126,6 +149,7 @@
         </http>
       </request>
 
+<<<<<<< HEAD
       <!--<request subst="true">-->
         <!--<http-->
                 <!--url='/friends'-->
@@ -144,6 +168,26 @@
         <!--</http>-->
       <!--</request>-->
 
+=======
+      <request subst="true">
+        <http
+                url='/friends'
+                version='1.1'
+                method='POST'
+                contents='friend=3'>
+        </http>
+      </request>
+
+      <request subst="true">
+        <http
+                url='/friends'
+                version='1.1'
+                method='POST'
+                contents='friend=4'>
+        </http>
+      </request>
+      -->
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
       <!-- group operations -->
       <thinktime value="3" random="true"></thinktime>
 
@@ -163,6 +207,7 @@
 
       <thinktime value="8" random="true"></thinktime>
 
+<<<<<<< HEAD
       <request subst="true">
         <http
                 url='/groups'
@@ -171,6 +216,16 @@
                 contents='group_name=%%_random_group_name%%&amp;1=1&amp;2=1&amp;3=1&amp;4=1' >
         </http>
       </request>
+=======
+      <!--<request subst="true">-->
+        <!--<http-->
+                <!--url='/groups'-->
+                <!--version='1.1'-->
+                <!--method='POST'-->
+                <!--contents='group_name=%%_random_group_name%%&amp;1=1&amp;2=1&amp;3=1&amp;4=1' >-->
+        <!--</http>-->
+      <!--</request>-->
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
 
       <request>
         <http url='/groups' version='1.1' method='GET'></http>
@@ -201,6 +256,7 @@
         <var name="random_content" />
       </setdynvars>
 
+<<<<<<< HEAD
       <request subst="true">
         <http
                 url='/adventures/create'
@@ -226,6 +282,44 @@
       </request>
 
       <thinktime value="3" random="true"></thinktime>
+=======
+      <!--<request subst="true">-->
+        <!--<http-->
+                <!--url='/adventures/create'-->
+                <!--version='1.1'-->
+                <!--method='POST'-->
+                <!--contents='location=%%_random_location%%&amp;num_people=%%_random_travellers%%&amp;num_day=%%_random_days%%&amp;plan=%%_random_content%%' >-->
+        <!--</http>-->
+      <!--</request>-->
+
+      <!--       <request>
+              <http url='/adventures/search?location=%%_random_location%%' version='1.1' method='GET'></http>
+            </request> -->
+
+      <!-- all adventure list -->
+      <thinktime value="2" random="true"></thinktime>
+      <!-- 1 -->
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 2 -->
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 3 -->
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 4 -->
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 5 -->
+      <request>
+        <http url='/adventures/index' version='1.1' method='GET' ></http>
+      </request>
+
+      <thinktime value="3" random="true"></thinktime>
 
       <!-- search existed location -->
       <!-- 1 -->
@@ -236,11 +330,33 @@
       <request>
         <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
       </request>
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
+
+      <!-- search existed location -->
+      <!-- 1 -->
+      <request>
+<<<<<<< HEAD
+=======
+        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 2 -->
+      <request>
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
+        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
+      </request>
 
       <request>
         <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
       </request>
+<<<<<<< HEAD
       <!-- 2 -->
+=======
+      <!-- 3 -->
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
       <request>
         <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
       </request>
@@ -252,6 +368,33 @@
       <request>
         <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
       </request>
+<<<<<<< HEAD
+=======
+      <!-- 4 -->
+      <request>
+        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
+      </request>
+      <!-- 5 -->
+      <request>
+        <http url='/adventures/search?location=a' version='1.1' method='GET' ></http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=b' version='1.1' method='GET' ></http>
+      </request>
+
+      <request>
+        <http url='/adventures/search?location=c' version='1.1' method='GET' ></http>
+      </request>
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
     </session>
   </sessions>
 </tsung>

@@ -6,10 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+<<<<<<< HEAD
 #t1= User.create(email: "mrshi1994@gmail.com", encrypted_password: "$2a$10$iz/HOog0t0EB4Fbt.f6qNe4l0JC4kzS5v.Nn2fJDUMCCM0/sgFMwO")
 #Notification.create(userid: 1, message: "have a try", user_id: t1.id)
 
 
+=======
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
 Adventure.create(location: "a", num_people: 2, num_day: 3, plan: "Hiking", user_id: 1);
 Adventure.create(location: "a", num_people: 2, num_day: 3, plan: "Hiking", user_id: 2);
 Adventure.create(location: "a", num_people: 3, num_day: 3, plan: "Hiking", user_id: 3);
@@ -25,4 +28,8 @@ Adventure.create(location: "c", num_people: 7, num_day: 3, plan: "Hiking", user_
 Adventure.create(location: "a", num_people: 8, num_day: 3, plan: "Hiking", user_id: 1);
 Adventure.create(location: "b", num_people: 70, num_day: 3, plan: "Hiking", user_id: 2);
 Adventure.create(location: "c", num_people: 23, num_day: 3, plan: "Hiking", user_id: 1);
+<<<<<<< HEAD
 Adventure.create(location: "a", num_people: 12, num_day: 3, plan: "Hiking", user_id: 1);
+=======
+Adventure.create(location: "a", num_people: 12, num_day: 3, plan: "Hiking", user_id: 1);
+>>>>>>> 8bbf7c62d379f4185440b07d003df6a3a24e768c
