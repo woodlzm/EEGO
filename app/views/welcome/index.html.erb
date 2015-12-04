@@ -1,0 +1,54 @@
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Explore it.</h1>
+        <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <form id="go_search" action="/adventures/search" method="get">
+              <input id="search_location" name="location" type="text" class="form-control" placeholder="Search for locations...">
+            </form>
+              <span class="input-group-btn">
+                <button onclick="goSearch()" class="btn btn-default" type="button">Go!</button>
+              </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div>
+        <p>Awesome plans by travellers around the world.</p>
+        <a href='googlmap'>Learn more.</a>
+      </div>
+    </div> 
+    <div class="neighborhood-guides">
+        <div class="container">
+            <h2>Easy Start</h2>
+            <p>No clue where to go? Try these gems we have.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="#"><img src="http://goo.gl/0sX3jq"></a>
+                    </div>
+                    <div class="thumbnail">
+                        <a href="#"><img src="http://goo.gl/an2HXY"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="#"><img src="http://goo.gl/Av1pac"></a>
+                    </div>
+                    <div class="thumbnail">
+                        <a href="#"><img src= "http://goo.gl/vw43v1"></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    <div class="learn-more">
+	  <div class="container">
+	  </div>
+	</div>
+
+    <script>
+      function goSearch() {
+          var form = $("#go_search");
+          form.submit();
+      }
+    </script>

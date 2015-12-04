@@ -1,9 +1,43 @@
 Rails.application.routes.draw do
+  get 'welcome/new'
+
+  resources :groups
+
+  get 'googlmap' => 'welcome#googlmap', as: :googlmap
+  get 'home' => 'welcome#index'
+
+  get 'friends' => 'friends#index'
+  post 'friends' => 'friends#create'
+  patch 'friends' => 'friends#update'
+  delete 'friends/:id' => 'friends#destroy', as: :destroy
+  #resource :friends, except: [:new, :create, :update, :edit]
+
+  get 'googlmap' => 'welcome#googlmap'
+
+  get 'adventures/index' => 'adventures#index'
+  get 'adventures/new' => 'adventures#new'
+  get 'adventures/search' => 'adventures#search'
+  post 'adventures/create' => 'adventures#create'
+  post 'adventures/delete' => 'adventures#delete'
+  post 'adventures/edit_page' => 'adventures#edit_page'
+  post 'adventures/edit' => 'adventures#edit'
+  get 'adventures/show_detail' => 'adventures#show_detail'
+
+  # group
+  get 'groups/index' => 'groups#index'
+  get 'groups/new' => 'groups#new'
+  post 'groups/show_detail' => 'groups#show_detail'
+  post 'groups/delete' => 'groups#delete'
+
+  devise_for :users
+
+  get 'notification' => 'notifications#index', as: :notification
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#new'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

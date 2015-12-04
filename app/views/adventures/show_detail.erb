@@ -1,0 +1,34 @@
+<div class="planform">
+    <table align="center">
+        <tr>
+          <td class="description"><h4>Location</h4></td>
+          <td>
+            <p><%=@location%></p>
+          </td>
+          </tr>
+          <tr>
+            <td class="description"><h4>Number of People</h4></td>
+            <td>
+              <p><%=@num_people%></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="description"><h4>Number of Days</h4></td>
+            <td>
+              <p><%=@num_day%></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="description"><h4>Plan</h4></td>
+            <td>
+              <textarea disabled id="plan" name="plan" class="form-control" rows="10" cols="40"><%=@plan%></textarea>
+            </td>
+          </tr>
+        <tr>
+          <td></td>
+          <!--<td><button class="btn btn-primary" onclick = "location.href='/adventures/index'">Back</button></td>-->
+          <td><button class="btn btn-primary" onclick = "javascript: history.go(-1)">Back</button></td>
+        </tr>
+
+    </table>
+</div>
